@@ -8,6 +8,7 @@ import ProjectsContainer from './pages/ProjectsContainer';
 import UsersContainer from './pages/UsersContainer';
 import ProjectDetail from './pages/ProjectDetail';
 import UserDetail from './pages/UserDetail'
+import EditProfileForm from './pages/EditProfileForm'
 
 const Routes = () => {
   return (
@@ -15,6 +16,7 @@ const Routes = () => {
       <Route exact path="/projects" component={ProjectsContainer} />
       <Route exact path="/projects/new" component={NewProjectForm} />
       <Route exact path="/projects/:id" component={ProjectDetail} />
+      <Route exact path="/users/edit" component={EditProfileForm} />
       <Route exact path="/users" component={UsersContainer} />
       <Route exact path="/users/:id" component={UserDetail} />
       <Route path="/signup" component={Signup} />

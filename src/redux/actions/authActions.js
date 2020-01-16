@@ -17,6 +17,10 @@ const clearUserAction = () => ({
   type: 'CLEAR_USER'
 });
 
+const editProfileAction = userObj => ({
+  type: 'EDIT_PROFILE',
+  payload: userObj
+})
 
 // Fetch
 
@@ -82,11 +86,26 @@ const logoutUser = () => dispatch => {
   localStorage.clear();
 };
 
+const editProfile = (newUserInfo, userId) => dispatch => {
+  const config = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newUserInfo)
+  }
+  fetch(SPECIFIC_USER_URL(userId), config)
+  .then(r => r.json())
+  .then(userObj => {
+    dispatch(editProfileAction(userObj))
+  })
+};
 
 export default {
   newUserToDB,
   deleteUserFromDB,
   loginUserToDB,
   persistUser,
-  logoutUser
+  logoutUser,
+  editProfile,
 };

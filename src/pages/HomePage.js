@@ -1,17 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
   const name = useSelector(state => state.currentUser.name);
-  const email = useSelector(state => state.currentUser.email)
-  const about = useSelector(state => state.currentUser.about)
-  const welcome = name ? (<h1>Welcomeback {name}</h1>)  :(<h1>Welcome back {email}</h1>);
+  const email = useSelector(state => state.currentUser.email);
+  const about = useSelector(state => state.currentUser.about);
+  const alias = useSelector(state => state.currentUser.alias);
   
+  const welcome = alias ? <h1>Welcome back {alias}</h1> 
+    : name ? (<h1>Welcome back {name}</h1>) : (<h1>Welcome back {email}</h1>);
+
   return (
     email 
     ? 
     <div>
-      <button>Edit Profile</button>
+      <Link to='/users/edit' >Edit Profile</Link>
       <h3> {welcome} </h3>
       <p> {about ? about : "Tell us about yourself" } </p>
       <div>

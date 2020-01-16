@@ -11,6 +11,9 @@ const Login = (props) => {
     password: ''
   });
 
+  const handleChange = e => 
+    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
+
   // controlled form functions
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,8 +21,6 @@ const Login = (props) => {
     props.history.push('/');
   };
 
-  const handleChange = e =>
-    setLoginForm({ ...loginForm, [e.target.name]: e.target.value });
 
   // Destructuring keys from our local state to use in the form
   const { email, password } = loginForm;

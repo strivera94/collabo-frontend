@@ -26,7 +26,7 @@ const UserContainer = () => {
 
     return (
             <div>
-              <h1>{ !user.id ? "User" : null }</h1>
+              <h1>{ !user.id ? "Users" : null }</h1>
               { !user.id ? renderUsers() : renderUserDetail() }
             </div>
         );

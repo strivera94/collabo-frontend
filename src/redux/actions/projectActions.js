@@ -30,14 +30,19 @@ const getProjects = projectsArray => dispatch => {
     })
 };
 
-const createProject = projectForm => dispatch => {
+const createProject = (projectObj, userId) => dispatch => {
     const config = {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(projectForm)
+        body: JSON.stringify({
+            user_id: userId,
+            title: projectObj.title,
+            description: projectObj.description
+        })
     }
+    console.log(projectObj)
     fetch(PROJECTS_URL, config)
     .then(r => r.json())
     .then(projectForm => {
