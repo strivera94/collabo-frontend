@@ -17,7 +17,6 @@ const NewProjectForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(projectForm)
     dispatch(projectActions.createProject(projectForm, id))
   }
     

@@ -24,7 +24,8 @@ const EditProfileForm =() => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(authActions.editProfile(editForm, id))        
+        dispatch(authActions.editProfile(editForm, id))      
+        // link to HomePage  
       }
 
     const {name, alias, about} = editForm

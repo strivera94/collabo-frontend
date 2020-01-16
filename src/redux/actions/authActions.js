@@ -22,7 +22,7 @@ const editProfileAction = userObj => ({
   payload: userObj
 })
 
-// Fetch
+// Dispatch
 
 const newUserToDB = userObj => dispatch => {
   const config = {

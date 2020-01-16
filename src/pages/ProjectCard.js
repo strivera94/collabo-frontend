@@ -6,10 +6,13 @@ const ProjectCard = (props) => {
     
     const dispatch = useDispatch()
 
-    const setProjectObj = () => dispatch(projectActions.showProject(props.project.id))
+    const renderProjectDetail = () => {
+        dispatch(projectActions.showProject(props.project.id))
+        dispatch(projectActions.getCollabs(props.project.id))
+    }
 
     return (
-        <div onClick={setProjectObj}>
+        <div onClick={renderProjectDetail}>
             <h3>{props.project.title ? props.project.title : "Untitled Project"}</h3>
             <p>{props.project.description}</p>
         </div>

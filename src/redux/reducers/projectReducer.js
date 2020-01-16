@@ -1,6 +1,7 @@
 const initialState = {
     projects: [],
-    project: {}
+    project: {},
+    collaborations:[]
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -15,7 +16,7 @@ export default (state = initialState, { type, payload }) => {
     case 'CREATE_PROJECT': 
         return {
             ...state,
-            projects: [...state.projects, payload]
+            projects: {...state.projects, payload}
         }
 
     case 'SHOW_PROJECT':
@@ -29,6 +30,20 @@ export default (state = initialState, { type, payload }) => {
             ...state,
             project: {}
         }
+
+    case 'GET_COLLABS':
+        return{
+            ...state,
+            collaborations: payload
+        }
+
+    case 'JOIN_PROJECT':
+        return { 
+        ...state,
+          collaborations: {...state.collaborations, payload}
+        }
+          
+        
 
     default:
         return state;
