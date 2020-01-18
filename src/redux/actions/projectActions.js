@@ -95,7 +95,6 @@ const joinProject = (userId, projectId) => dispatch => {
     fetch(COLLAB_URL, config)
     .then(r => r.json())
     .then(collabObj => 
-        // console.log(collabObj)
         dispatch(joinProjectAction(collabObj))
         )
 }

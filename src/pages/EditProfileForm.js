@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { withRouter } from 'react-router'
 import authActions from '../redux/actions/authActions'
 
-const EditProfileForm =() => {
+const EditProfileForm =({history}) => {
     const dispatch = useDispatch()
     const id = useSelector(state => state.currentUser.id)
     const initName = useSelector(state => state.currentUser.name)
@@ -26,6 +27,8 @@ const EditProfileForm =() => {
         event.preventDefault();
         dispatch(authActions.editProfile(editForm, id))      
         // link to HomePage  
+        history.push('/')
+        
       }
 
     const {name, alias, about} = editForm

@@ -40,7 +40,7 @@ export default (state = initialState, { type, payload }) => {
     case 'JOIN_PROJECT':
         return { 
         ...state,
-          collaborations: {...state.collaborations, payload}
+          collaborations: [...state.collaborations, payload]
         }
           
         
