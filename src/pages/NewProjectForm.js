@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
+import { Form, Button } from 'semantic-ui-react' 
+import { Redirect, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import projectActions from '../redux/actions/projectActions'
+
+// Should redirect to ProjectDetail
 
 const NewProjectForm = () => {
     const dispatch = useDispatch()
@@ -14,16 +18,21 @@ const NewProjectForm = () => {
   const handleChange = (e) => {
     setProjectForm({ ...projectForm, [e.target.name]: e.target.value });
   }
-
+  const project = useSelector(state => state.projects.projects)
+  
   const handleSubmit = (event) => {
     event.preventDefault()
     dispatch(projectActions.createProject(projectForm, id))
+    //redirect to ProjectDetail
+    // <Redirect to='/projects' />
+    dispatch(projectActions.showProject(project[project.length - 1].id))
+    dispatch(projectActions.getCollabs(project[project.length -1].id))
   }
     
   // console.log(this.state.title, this.state.description)
   const {title, description} = projectForm
   return (
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <h1>New Project Form</h1>
               {/* <label>
                 Discipline being sought:
@@ -44,17 +53,20 @@ const NewProjectForm = () => {
                   <option value="Sculpting">Sculpting</option>
                 </select>
               </label> */}
-              <br/>
+              <Form.Field>
               <label>
                 Title
                 <input name="title" type="text" placeholder="Bold & Brash" onChange={handleChange} value={title} />
               </label>
+              </Form.Field>
+              <Form.Field>
               <label>
                 Description
                 <input name="description" type="text" placeholder="Help me do an art" onChange={handleChange} value={description} />
               </label>
-              <button type="submit">Submit</button>
-            </form>
+              </Form.Field>
+              <Button type="submit">Submit</Button>
+            </Form>
   );
 }
 

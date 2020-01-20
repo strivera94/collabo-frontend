@@ -1,4 +1,5 @@
 import React from 'react';
+import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux' ;
 import authActions from '../redux/actions/authActions';
@@ -24,21 +25,23 @@ const NavBar = () => {
 
   return (
     email ?
-    <nav style={{ display: 'flex', justifyContent: 'space-evenly', color:'white', backgroundColor:'blue' }}>
-      <Link to="/">Home</Link>
-      <Link to="/users" onClick={clearUserState} >Users</Link>
-      <Link to="/projects" onClick={clearProjectState}>Projects </Link>
-      <Link to="/projects/new">NewProject</Link>
-      <Link to="/" onClick={handleLogout}>Logout</Link>
-    </nav>
+    <Menu>
+      <Menu.Item header>Collabo</Menu.Item>
+      <Menu.Item as={Link} to="/">Home</Menu.Item>
+      <Menu.Item as={Link} to="/users" onClick={clearUserState} >Users</Menu.Item>
+      <Menu.Item as={Link} to="/projects" onClick={clearProjectState}>Projects </Menu.Item>
+      <Menu.Item as={Link} to="/projects/new">NewProject</Menu.Item>
+      <Menu.Item as={Link} to="/" onClick={handleLogout}>Logout</Menu.Item>
+    </Menu>
     :
-    <nav style={{ display: 'flex', justifyContent: 'space-evenly', color:'white', backgroundColor:'blue' }}>
-      <Link to="/">Home</Link>
-      <Link to="/users" onClick={clearUserState}>Users</Link>
-      <Link to="/projects" onClick={clearProjectState}>Projects</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
-    </nav>
+    <Menu>
+      <Menu.Item header>Collabo</Menu.Item>
+      <Menu.Item as={Link} to="/">Home</Menu.Item>
+      <Menu.Item as={Link} to="/users" onClick={clearUserState}>Users</Menu.Item>
+      <Menu.Item as={Link} to="/projects" onClick={clearProjectState}>Projects</Menu.Item>
+      <Menu.Item as={Link} to="/login">Login</Menu.Item>
+      <Menu.Item as={Link} to="/signup">Signup</Menu.Item>
+    </Menu>
   );
 }
 

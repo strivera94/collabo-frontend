@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Form, Button } from 'semantic-ui-react'
 import {useDispatch} from 'react-redux';
 import userActions from '../redux/actions/authActions'
 
@@ -28,8 +29,9 @@ const Signup = (props) => {
 
   // Component code
   return (
-    <form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <h1>Signup Page</h1>
+      <Form.Field>
       <input
         type="text"
         name="email"
@@ -37,6 +39,8 @@ const Signup = (props) => {
         onChange={handleChange}
         placeholder="E-mail"
       />
+      </Form.Field>
+      <Form.Field>
       <input
         type="password"
         name="password"
@@ -44,7 +48,8 @@ const Signup = (props) => {
         onChange={handleChange}
         placeholder="Password"
       />
-
+      </Form.Field>
+      <Form.Field>
       <input 
         type="text"
         name="name"
@@ -52,8 +57,9 @@ const Signup = (props) => {
         onChange={handleChange}
         placeholder="Name"
       />
-      <input type="submit" />
-    </form>
+      </Form.Field>
+      <Button type="submit">Submit</Button>
+    </Form>
   );
 }
 

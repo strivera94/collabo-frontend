@@ -1,8 +1,10 @@
 import React from 'react';
+import { Card, List, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux';
 import projectActions from '../redux/actions/projectActions'
 
 const ProjectDetail = (props) => {
+
     const dispatch = useDispatch()
     const project = useSelector(state => state.projects.project)
     const user = useSelector(state => state.currentUser.id)
@@ -16,32 +18,43 @@ const ProjectDetail = (props) => {
 
     const listCollaborators = () => {
      return collaborators.map(collaborator => 
-           <p>{collaborator.user.name}</p>
+       <List.Item>
+          <List.Content>
+            <List.Header>{collaborator.user.name}, {collaborator.user.email}</List.Header>
+          </List.Content>
+       </List.Item>
         )
     }
     
     const checkIfJoined = () => {
         const collaboratorIds = collaborators.map(collaborator => 
         collaborator.user.id)
-        console.log(collaboratorIds, user)
         if (!collaboratorIds.includes(user)){
-           return <button onClick={joinProject}>Join Project</button> 
+           return <Button onClick={joinProject}>Join Project</Button> 
         } else{
             return <p>You've already joined this project</p>
         }
     }
 
     return (
-        <div>
-            <h1>{project.title ? project.title : "Untitled Project"}</h1>
-            <h3>Hosted by: {host} </h3>
-            <p><strong>Description:</strong> {project.description}</p>
+      <div>
+        <Card>
+          <Card.Content>
+            <Card.Header>{project.title ? project.title : "Untitled Project"}</Card.Header>
+            <Card.Description>Hosted by: {host} </Card.Description>
+            <Card.Description><strong>Description:</strong> {project.description}</Card.Description>
             {checkIfJoined()}
-            <h3>Collaborating with:</h3>
-              <ul>
+          </Card.Content>
+        </Card>
+        <Card>
+          <Card.Content>
+            <Card.Header>Collaborating with:</Card.Header>
+              <List celled size={'small'}>
                 {listCollaborators()}
-              </ul>
-        </div>
+              </List>
+          </Card.Content>
+        </Card>
+      </div>
     );
 }
 

@@ -9,6 +9,7 @@ import UsersContainer from './pages/UsersContainer';
 import ProjectDetail from './pages/ProjectDetail';
 import UserDetail from './pages/UserDetail'
 import EditProfileForm from './pages/EditProfileForm'
+import ReviewForm from './pages/ReviewForm';
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       <Route exact path="/projects/new" component={NewProjectForm} />
       <Route exact path="/projects/:id" component={ProjectDetail} />
       <Route exact path="/users/edit" component={EditProfileForm} />
+      <Route exact path="/users/review" component={ReviewForm} />
       <Route exact path="/users" component={UsersContainer} />
       <Route exact path="/users/:id" component={UserDetail} />
       <Route path="/signup" component={Signup} />

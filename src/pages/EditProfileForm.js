@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
+import { Form, Button } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
-import { withRouter } from 'react-router'
 import authActions from '../redux/actions/authActions'
 
 const EditProfileForm =({history}) => {
@@ -34,6 +34,7 @@ const EditProfileForm =({history}) => {
     const {name, alias, about} = editForm
     return (
         <div>
+            <Form>
             <h1>Edit Profile</h1>
             {/* <label>
                  Email: 
@@ -43,19 +44,26 @@ const EditProfileForm =({history}) => {
                  Password: 
                  <input name="password" type="password" onChange={this.handleChange} value={this.state.password} />
              </label> */}
+             <Form.Field>
              <label>
                 Name: 
                 <input name="name" type="text" onChange={handleChange} value={name} />
             </label>
+            </Form.Field>
+            <Form.Field>
             <label>
                  Alias: 
                  <input name="alias" type="text" onChange={handleChange} value={alias} />
              </label>
+             </Form.Field>
+             <Form.Field>
              <label>
                  About: 
                 <input name="about" type="text" onChange={handleChange} value={about} />
             </label>
-            <button onClick={handleSubmit}>Submit</button>
+            </Form.Field>
+            <Button onClick={handleSubmit} type='submit' >Submit</Button>
+            </Form>
         </div>
     )
 }
