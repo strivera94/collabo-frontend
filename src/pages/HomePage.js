@@ -75,7 +75,7 @@ const HomePage = () => {
           <Grid.Column width='7'floated='left' >
             <Card>
               <h3>Reviews</h3>
-              {listReviews()}
+              { reviews.length == 0 ? "There are no reviews to display" : listReviews() }
             </Card>
           </Grid.Column>
           {/* <Grid.Column>

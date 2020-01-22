@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {List, Image} from 'semantic-ui-react';
+import {List, Image, Grid} from 'semantic-ui-react';
 import {useSelector, useDispatch} from 'react-redux';
 import userActions from '../redux/actions/userActions'
 import reviewActions from '../redux/actions/reviewActions'
@@ -41,11 +41,23 @@ const UserContainer = () => {
 
     return (
             <div>
-              <h1>{ !user.id ? "Users" : null }</h1>
-              { !user.id ?
-               <List celled size={"big"}>
-                 {renderInfo()} 
-               </List>:
+              { !user.id
+               ?
+               <Grid centered >
+                <Grid.Row>
+                  <Grid.Column width={14} >
+               <h1>{ !user.id ? "Users" : null }</h1>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column width={14} >
+                    <List celled size={"big"}>
+                      {renderInfo()} 
+                    </List>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+               :
                 renderUserDetail() }
             </div>
         );
