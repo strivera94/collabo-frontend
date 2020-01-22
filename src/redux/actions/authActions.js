@@ -22,7 +22,7 @@ const editProfileAction = userObj => ({
   payload: userObj
 })
 
-// Dispatch
+// Action Creators
 
 const newUserToDB = userObj => dispatch => {
   const config = {
@@ -35,8 +35,12 @@ const newUserToDB = userObj => dispatch => {
   fetch(USERS_URL, config)
     .then(r => r.json())
     .then(data => {
-      dispatch(setUserAction(data.user));
-      localStorage.setItem('token', data.token);
+      if(data.errors){
+        alert(data.errors)
+      }else {
+        dispatch(setUserAction(data.user));
+        localStorage.setItem('token', data.token);
+      }
     });
 };
 
@@ -62,9 +66,13 @@ const loginUserToDB = userCredentials => dispatch => {
   fetch(LOGIN_URL, config)
     .then(r => r.json())
     .then(data => {
-      dispatch(setUserAction(data.user));
-      localStorage.setItem('token', data.token);
-    });
+      if(data.errors){
+        alert(data.errors)
+      }else{
+        dispatch(setUserAction(data.user));
+        localStorage.setItem('token', data.token)
+      }
+    })
 };
 
 const persistUser = () => dispatch => {

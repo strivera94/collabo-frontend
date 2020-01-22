@@ -9,7 +9,8 @@ const ProjectDetail = (props) => {
     const project = useSelector(state => state.projects.project)
     const user = useSelector(state => state.currentUser.id)
     const collaborators = useSelector(state => state.projects.collaborations)
-    const host = useSelector(state => state.projects.project.user.name)
+    const host = useSelector(state => state.projects.project.user.id)
+    const hostName = useSelector(state => state.projects.project.user.name)
 
     const joinProject = (event) => {
         event.preventDefault()
@@ -26,14 +27,25 @@ const ProjectDetail = (props) => {
         )
     }
     
-    const checkIfJoined = () => {
+    const handleProjectButton = () => {
         const collaboratorIds = collaborators.map(collaborator => 
         collaborator.user.id)
-        if (!collaboratorIds.includes(user)){
-           return <Button onClick={joinProject}>Join Project</Button> 
+        if (project.completed){
+          return <Button disabled color="grey" >Project Complete!</Button>
+        }else if( host === user){
+           return <Button color="green" onClick={declareCompleted} >Mark as Completed</Button>
+        } else if (!collaboratorIds.includes(user)){
+            return <Button onClick={joinProject} color="blue" >Join Project</Button>
         } else{
             return <p>You've already joined this project</p>
         }
+    }
+
+
+    const declareCompleted = (event) => {
+      event.preventDefault()
+      console.log("clicked")
+      dispatch(projectActions.declareCompleted(project.id))
     }
 
     return (
@@ -41,9 +53,9 @@ const ProjectDetail = (props) => {
         <Card>
           <Card.Content>
             <Card.Header>{project.title ? project.title : "Untitled Project"}</Card.Header>
-            <Card.Description>Hosted by: {host} </Card.Description>
+            <Card.Description>Hosted by: {hostName} </Card.Description>
             <Card.Description><strong>Description:</strong> {project.description}</Card.Description>
-            {checkIfJoined()}
+            {handleProjectButton()}
           </Card.Content>
         </Card>
         <Card>

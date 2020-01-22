@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { List } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import projectActions from '../redux/actions/projectActions';
-import ProjectCard from './ProjectCard';
 import ProjectDetail from './ProjectDetail';
 
 const ProjectsContainer = (props) => {
@@ -22,7 +21,7 @@ const ProjectsContainer = (props) => {
         {dispatch(projectActions.showProject(project.id))
         dispatch(projectActions.getCollabs(project.id))}}>
         <List.Content>
-          <List.Header> {project.title ? project.title : "Untitled Project"} </List.Header>
+          <List.Header> {project.title ? project.title : "Untitled Project"} | {project.completed ? "Completed" : "Active"}  </List.Header>
           <List.Description>{project.description}</List.Description>
         </List.Content>
       </List.Item>)

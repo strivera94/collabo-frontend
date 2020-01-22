@@ -3,8 +3,11 @@ export default (state={}, {type, payload}) => {
       case 'SET_USER':
         return payload;
 
+      // case 'SET_USER_ERROR':
+      //   return payload;
+
       case 'EDIT_PROFILE':
-        return payload;
+        return payload
 
       case 'CLEAR_USER':
         return {};

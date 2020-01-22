@@ -4,6 +4,7 @@ import currentUser from './reducers/authReducer'
 import projects from './reducers/projectReducer'
 import users from './reducers/userReducer'
 import reviews from './reducers/reviewReducer'
+import logger from 'redux-logger'
 
 
 const rootReducer = combineReducers({
@@ -13,4 +14,4 @@ const rootReducer = combineReducers({
   reviews: reviews
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export default createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
+export default createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, /*logger*/)));

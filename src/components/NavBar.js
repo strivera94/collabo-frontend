@@ -26,7 +26,7 @@ const NavBar = () => {
   return (
     email ?
     <Menu>
-      <Menu.Item header>Collabo</Menu.Item>
+      <Menu.Item header>COLLABO</Menu.Item>
       <Menu.Item as={Link} to="/">Home</Menu.Item>
       <Menu.Item as={Link} to="/users" onClick={clearUserState} >Users</Menu.Item>
       <Menu.Item as={Link} to="/projects" onClick={clearProjectState}>Projects </Menu.Item>
@@ -35,7 +35,7 @@ const NavBar = () => {
     </Menu>
     :
     <Menu>
-      <Menu.Item header>Collabo</Menu.Item>
+      <Menu.Item header>COLLABO</Menu.Item>
       <Menu.Item as={Link} to="/">Home</Menu.Item>
       <Menu.Item as={Link} to="/users" onClick={clearUserState}>Users</Menu.Item>
       <Menu.Item as={Link} to="/projects" onClick={clearProjectState}>Projects</Menu.Item>

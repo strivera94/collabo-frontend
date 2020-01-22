@@ -23,9 +23,7 @@ const ReviewForm = ({history}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log('before Dispatch')
         dispatch(reviewActions.postReview(userId, reviewee, reviewForm))
-        console.log('from the Form')
         history.push('/users')
     }
 

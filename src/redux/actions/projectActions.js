@@ -33,8 +33,13 @@ const joinProjectAction = collabObj => ({
     payload: collabObj
 });
 
+const declareCompletedAction = projectObj => ({
+    type: 'DECLARE_COMPLETED',
+    payload: projectObj
+})
+
 //Fetches
-const getProjects = projectsArray => dispatch => {
+const getProjects = () => dispatch => {
     fetch(PROJECTS_URL)
     .then(r => r.json())
     .then(projectsArray => {
@@ -99,11 +104,29 @@ const joinProject = (userId, projectId) => dispatch => {
         )
 }
 
+const declareCompleted = (projectId) => dispatch => {
+    const config = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            completed: true
+        })
+    }
+    fetch(SPECIFIC_PROJECT_URL(projectId), config)
+    .then(r => r.json())
+    .then(projectObj => 
+        dispatch(declareCompletedAction(projectObj))
+    )
+}
+
 export default {
     getProjects,
     createProject,
     showProject,
     clearProject,
     getCollabs,
-    joinProject
+    joinProject,
+    declareCompleted
 }

@@ -16,7 +16,7 @@ export default (state = initialState, { type, payload }) => {
     case 'CREATE_PROJECT': 
         return {
             ...state,
-            projects: {...state.projects, payload}
+            projects: [...state.projects, payload]
         }
 
     case 'SHOW_PROJECT':
@@ -43,7 +43,11 @@ export default (state = initialState, { type, payload }) => {
           collaborations: [...state.collaborations, payload]
         }
           
-        
+    case 'DECLARE_COMPLETED':
+        return{
+            ...state,
+            project: payload
+        }
 
     default:
         return state;

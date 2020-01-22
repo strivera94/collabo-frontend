@@ -16,7 +16,7 @@ const UserContainer = () => {
       dispatch(userActions.getUsers());
     })
     
-    const renderUsers = () => {
+    const renderInfo = () => {
       // use Semantic-UI-React to render this list
       return users.map(user =>
           <List.Item key={user.id} onClick={()=>{dispatch(userActions.showUser(user.id))
@@ -29,7 +29,7 @@ const UserContainer = () => {
             )
     }
 
-    // const renderUsers = () => {
+    // const renderInfo = () => {
     //   // use Semantic-UI-React to render this list
     //     return users.map(user =>
     //       <UserCard key={user.id} user={user} />)
@@ -44,7 +44,7 @@ const UserContainer = () => {
               <h1>{ !user.id ? "Users" : null }</h1>
               { !user.id ?
                <List celled size={"big"}>
-                 {renderUsers()} 
+                 {renderInfo()} 
                </List>:
                 renderUserDetail() }
             </div>

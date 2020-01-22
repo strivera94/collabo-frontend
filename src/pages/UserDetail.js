@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Button, List, Rating } from 'semantic-ui-react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import ReviewForm from './ReviewForm'
+// import ReviewForm from './ReviewForm'
 
 const UserDetail = (props) => {
   const currentUser = useSelector(state => state.currentUser.id)
@@ -21,9 +21,9 @@ const UserDetail = (props) => {
     return reviews.map(review => 
       <List.Item key={review.id}>
       <List.Content>
-        <List.Header as={Rating} icon='star' maxRating={5} size='small'
+        <List.Header>{review.content}</List.Header>
+        <List.Description as={Rating} icon='star' maxRating={5} size='small'
          disabled rating={review.rating} />
-        <List.Description>{review.content}</List.Description>
       </List.Content>
    </List.Item>
     )
