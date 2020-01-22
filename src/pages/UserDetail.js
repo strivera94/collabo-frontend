@@ -10,22 +10,20 @@ const UserDetail = (props) => {
 
   const checkIfUser = () => {
     if (currentUser !== props.user.id){
-      return <Button as={Link} to='/users/review' >Leave Review</Button>
+      return <Button as={Link} to='/users/review' size="tiny" color='teal' >Leave Review</Button>
     } 
 
   }
-
-
   
   const listReviews = () => {
     return reviews.map(review => 
       <List.Item key={review.id}>
-      <List.Content>
-        <List.Header>{review.content}</List.Header>
-        <List.Description as={Rating} icon='star' maxRating={5} size='small'
-         disabled rating={review.rating} />
-      </List.Content>
-   </List.Item>
+        <List.Content>
+          <List.Header>{review.content}</List.Header>
+          <List.Description as={Rating} icon='star' maxRating={5} size='small'
+          disabled rating={review.rating} />
+        </List.Content>
+      </List.Item>
     )
   }
 

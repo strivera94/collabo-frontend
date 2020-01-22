@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Grid, Segment, Header } from 'semantic-ui-react'
 import {useDispatch} from 'react-redux';
 import userActions from '../redux/actions/authActions'
 
@@ -29,37 +29,44 @@ const Signup = (props) => {
 
   // Component code
   return (
-    <Form onSubmit={handleSubmit}>
-      <h1>Signup Page</h1>
-      <Form.Field>
-      <input
-        type="text"
-        name="email"
-        value={email}
-        onChange={handleChange}
-        placeholder="E-mail"
-      />
-      </Form.Field>
-      <Form.Field>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      </Form.Field>
-      <Form.Field>
-      <input 
-        type="text"
-        name="name"
-        value={name}
-        onChange={handleChange}
-        placeholder="Name"
-      />
-      </Form.Field>
-      <Button type="submit">Submit</Button>
-    </Form>
+    <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
+      <Grid.Column style={{ maxWidth: 450 }} >
+        <Form onSubmit={handleSubmit}>
+          <Header as='h1' color="teal" >Signup Page</Header>
+          <Segment>
+            <Form.Field>
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              placeholder="E-mail"
+            />
+            </Form.Field>
+            <Form.Field>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
+            </Form.Field>
+            <Form.Field>
+            <input 
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+              placeholder="Name"
+            />
+            </Form.Field>
+            <p textAlign='left' >Please fill out all fields</p>
+            <Button type="submit" color='teal' >Submit</Button>
+          </Segment>
+        </Form>
+      </Grid.Column>
+    </Grid>
   );
 }
 

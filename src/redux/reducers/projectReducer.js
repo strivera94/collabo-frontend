@@ -1,7 +1,8 @@
 const initialState = {
     projects: [],
     project: {},
-    collaborations:[]
+    collaborations:[],
+    filter_by_active: false
 }
 
 export default (state = initialState, { type, payload }) => {
@@ -39,14 +40,20 @@ export default (state = initialState, { type, payload }) => {
 
     case 'JOIN_PROJECT':
         return { 
-        ...state,
-          collaborations: [...state.collaborations, payload]
+            ...state,
+            collaborations: [...state.collaborations, payload]
         }
           
     case 'DECLARE_COMPLETED':
         return{
             ...state,
             project: payload
+        }
+
+    case 'FILTER_BY_ACTIVE':
+        return{
+            ...state,
+            filter_by_active: true
         }
 
     default:

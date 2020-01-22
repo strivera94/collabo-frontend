@@ -23,6 +23,9 @@ const ReviewForm = ({history}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        if(!userId){
+            return alert("Must be logged in to leave a review")
+        }else
         dispatch(reviewActions.postReview(userId, reviewee, reviewForm))
         history.push('/users')
     }
@@ -38,7 +41,7 @@ const ReviewForm = ({history}) => {
           <Form.Field>
             <Rating icon="star" maxRating={5} onRate={handleRating} rating={rating} name="rating" />  
           </Form.Field>
-          <Button onClick={handleSubmit} type='submit' >Submit</Button>
+          <Button onClick={handleSubmit} type='submit' color='teal' >Submit</Button>
         </Form>
     );
 }

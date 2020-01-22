@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Grid, Segment, Header } from 'semantic-ui-react'
 import {useDispatch} from 'react-redux';
 import authActions from '../redux/actions/authActions';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -28,28 +29,35 @@ const Login = (props) => {
 
   // Component code
   return (
-    <Form onSubmit={handleSubmit}>
-      <h1>Login Page</h1>
-      <Form.Field>
-      <input
-        type="text"
-        name="email"
-        value={email}
-        onChange={handleChange}
-        placeholder="E-mail"
-      />
-      </Form.Field>
-      <Form.Field>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={handleChange}
-        placeholder="Password"
-      />
-      </Form.Field>
-      <Button type="submit">Submit</Button>
-    </Form>
+    <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle' >
+      <Grid.Column style={{ maxWidth: 450 }} >
+        <Form onSubmit={handleSubmit}>
+          <Segment>
+            <Header as='h1' color="teal" >Login Page</Header>
+            <Form.Field>
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              placeholder="E-mail"
+            />
+            </Form.Field>
+            <Form.Field>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
+            </Form.Field>
+            <Button type="submit" color="teal" >Submit</Button>
+          </Segment>
+            <Header as={Link} to='/signup' color='blue' content='or sign-up now' ></Header>
+        </Form>
+      </Grid.Column>
+    </Grid>
   );
 }
 

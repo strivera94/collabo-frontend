@@ -8,6 +8,7 @@ const ProjectsContainer = (props) => {
   
   const projects = useSelector(state => state.projects.projects)
   const project = useSelector(state => state.projects.project)
+  const active = useSelector(state => state.projects.filter_by_active)
 
   const dispatch = useDispatch()
   
@@ -16,6 +17,18 @@ const ProjectsContainer = (props) => {
   })
 
   const renderProjects = () => {
+    if(active){
+      const activeProj = projects.filter(project => !project.completed)
+      return activeProj.map(project => 
+        <List.Item key={project.id} onClick={()=>
+          {dispatch(projectActions.showProject(project.id))
+          dispatch(projectActions.getCollabs(project.id))}}>
+          <List.Content>
+            <List.Header> {project.title ? project.title : "Untitled Project"} | {project.completed ? "Completed" : "Active"}  </List.Header>
+            <List.Description>{project.description}</List.Description>
+          </List.Content>
+        </List.Item>)
+    }else{
     return projects.map(project => 
       <List.Item key={project.id} onClick={()=>
         {dispatch(projectActions.showProject(project.id))
@@ -25,6 +38,7 @@ const ProjectsContainer = (props) => {
           <List.Description>{project.description}</List.Description>
         </List.Content>
       </List.Item>)
+    }
   }
 
   const renderProjectDetail = () => {

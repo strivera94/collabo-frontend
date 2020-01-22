@@ -38,6 +38,10 @@ const declareCompletedAction = projectObj => ({
     payload: projectObj
 })
 
+const filterByActiveAction = () => ({
+    type: 'FILTER_BY_ACTIVE',
+})
+
 //Fetches
 const getProjects = () => dispatch => {
     fetch(PROJECTS_URL)
@@ -121,6 +125,10 @@ const declareCompleted = (projectId) => dispatch => {
     )
 }
 
+const filterByActive = () => dispatch => {
+    dispatch(filterByActiveAction())
+}
+
 export default {
     getProjects,
     createProject,
@@ -128,5 +136,6 @@ export default {
     clearProject,
     getCollabs,
     joinProject,
-    declareCompleted
+    declareCompleted,
+    filterByActive,
 }
