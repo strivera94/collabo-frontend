@@ -17,23 +17,17 @@ const UserContainer = () => {
     })
     
     const renderInfo = () => {
-      // use Semantic-UI-React to render this list
       return users.map(user =>
           <List.Item key={user.id} onClick={()=>{dispatch(userActions.showUser(user.id))
           dispatch(reviewActions.getReviews(user.id))}}>
             <Image avatar src='https://t3.ftcdn.net/jpg/00/64/67/52/240_F_64675209_7ve2XQANuzuHjMZXP3aIYIpsDKEbF5dD.jpg' />
             <List.Content>
-              <List.Header > {user.name}</List.Header>
+              {console.log(user.alias)}
+              <List.Header > { !user.alias ? user.name : user.alias } </List.Header>
             </List.Content>
             </List.Item>
             )
     }
-
-    // const renderInfo = () => {
-    //   // use Semantic-UI-React to render this list
-    //     return users.map(user =>
-    //       <UserCard key={user.id} user={user} />)
-    // }
 
     const renderUserDetail = () => {
         return <UserDetail user={user} />

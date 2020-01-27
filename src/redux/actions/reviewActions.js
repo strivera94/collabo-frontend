@@ -40,7 +40,6 @@ const postReview = (userId, revieweeId, reviewForm) => dispatch => {
     .then(r => r.json())
     .then(reviewObj => {
         dispatch(postReviewAction(reviewObj))
-        console.log("from Action",reviewObj)
     })
 }
 

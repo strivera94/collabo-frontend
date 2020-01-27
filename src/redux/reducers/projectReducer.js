@@ -53,7 +53,7 @@ export default (state = initialState, { type, payload }) => {
     case 'FILTER_BY_ACTIVE':
         return{
             ...state,
-            filter_by_active: true
+            filter_by_active: !state.filter_by_active
         }
 
     default:

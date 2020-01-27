@@ -35,13 +35,13 @@ const NewProjectForm = ({history}) => {
             <Form.Field>
               <label>
                 Title
-                <input name="title" type="text" placeholder="Bold & Brash" onChange={handleChange} value={title} />
+                <input name="title" type="text" placeholder="Project Title" onChange={handleChange} value={title} />
               </label>
             </Form.Field>
             <Form.Field>
               <label>
                 Description
-                <input name="description" type="text" placeholder="Help me do an art" onChange={handleChange} value={description} />
+                <input name="description" type="text" placeholder="What are you looking to do?" onChange={handleChange} value={description} />
               </label>
             </Form.Field>
             <Button type="submit" color='teal' >Submit</Button>

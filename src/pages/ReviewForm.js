@@ -31,7 +31,6 @@ const ReviewForm = ({history}) => {
     }
 
     const {content, rating} = reviewForm
-    console.log(content, rating)
     return (
         <Form >
           <Form.Field>

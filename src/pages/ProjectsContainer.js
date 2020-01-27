@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { List, Grid } from 'semantic-ui-react';
+import { List, Grid, Icon, Button } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
 import projectActions from '../redux/actions/projectActions';
 import ProjectDetail from './ProjectDetail';
@@ -45,6 +45,9 @@ const ProjectsContainer = (props) => {
     return <ProjectDetail project={project} />
   }
 
+  const filterProjects = () => {
+    dispatch(projectActions.filterByActive())
+  }
   
     return (
       <div>
@@ -53,6 +56,12 @@ const ProjectsContainer = (props) => {
           <Grid.Row>
             <Grid.Column width={14} >
         <h1>{!project.id ? "Projects" : null}</h1>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column width={14} textAlign='right' >
+              <Button onClick={filterProjects} size='small' >{ active ? "Filter by Active: On" : "Filter by Active: Off"}
+               <Icon size='small' color='grey' name='filter' /></Button>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

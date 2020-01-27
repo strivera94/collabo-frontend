@@ -33,7 +33,6 @@ const ProjectDetail = (props) => {
       
   const declareCompleted = (event) => {
     event.preventDefault()
-    console.log("clicked")
     dispatch(projectActions.declareCompleted(project.id))
   }
   
